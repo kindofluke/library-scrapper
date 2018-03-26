@@ -33,12 +33,16 @@ def get_library(lib_url):
     return library_info
 
 libraries = []
-for x in range(3,300):
+for x in range(3,300000):
     try:
         lib_data = get_library("http://www.worldcat.org/libraries/{0}".format(x))
         libraries.append(lib_data)
+    except KeyboardInterrupt:
+        raise
     except:
         True
+    if len(libraries) % 10000 == 0:
+        print(len(libraries))
 
 
 with open('libraries.json', 'w') as jsonfile:
