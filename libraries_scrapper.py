@@ -66,7 +66,7 @@ def get_library(lib_url):
 
 libraries = []
 setup_table()
-for x in range(3,10):
+for x in range(3,300000):
     try:
         lib_data = get_library("http://www.worldcat.org/libraries/{0}".format(x))
     except KeyboardInterrupt:
@@ -79,6 +79,4 @@ for x in range(3,10):
         print("{0} rows processed".format(x))
 
 
-with open('libraries.json', 'w') as jsonfile:
-    json.dump(libraries, jsonfile)
 
